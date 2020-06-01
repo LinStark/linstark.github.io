@@ -1,0 +1,476 @@
+<style>
+    .login input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 50px #fff inset !important
+    }
+
+
+
+    .login* {
+        box-sizing: border-box
+    }
+
+    @media screen and (min-width: 481px) {
+
+
+        .login .card-container {
+            max-width: 370px;
+            margin: 8vw auto;
+            background: #fff;
+            width: 100%;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            padding: 2rem 3rem;
+            border-radius: 1px;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-transition: box-shadow .1s ease, -webkit-transform .1s ease;
+            transition: box-shadow .1s ease, transform .1s ease
+        }
+
+        .login .card-container:hover {
+            box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
+            -webkit-transform: scale(1.005);
+            transform: scale(1.005)
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .login .card-container {
+            width: 100%;
+            box-shadow: 0;
+            padding: 5px 10px;
+            border-radius: 0;
+            background: transparent;
+        }
+    }
+
+
+    .login a {
+        text-decoration: none;
+        color: #d75757;
+        font-weight: 300;
+    }
+
+
+    .login .form-group {
+        position: relative;
+        margin-top: 1.5em;
+        margin-bottom: 1em;
+        min-height: 1rem;
+    }
+
+    .login .left {
+        float: left;
+    }
+
+    .login .right {
+        float: right;
+    }
+
+
+    .login .form-group .help-block {
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        color: #9e9e9e
+    }
+
+    .login .checkbox label, .form-radio label {
+        position: relative;
+        cursor: pointer;
+        padding-left: 1.5rem;
+        text-align: left;
+        font-size: .6rem;
+        color: #666;
+        display: block
+    }
+
+    .login .checkbox input, .form-radio input {
+        width: auto;
+        opacity: .00000001;
+        position: absolute;
+        left: 0
+    }
+
+    .login .checkbox .helper {
+        color: #999;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1rem;
+        height: 1rem;
+        z-index: 0;
+        border: .1rem solid currentColor;
+        border-radius: .0625rem;
+        -webkit-transition: border-color .1s ease;
+        transition: border-color .1s ease
+    }
+
+    .login .checkbox .helper::after, .checkbox .helper::before {
+        position: absolute;
+        height: 0;
+        width: .1rem;
+        background-color: #666;
+        display: block;
+        -webkit-transform-origin: left top;
+        transform-origin: left top;
+        border-radius: .2rem;
+        content: '';
+        -webkit-transition: opacity .1s ease, height 0s linear .1s;
+        transition: opacity .1s ease, height 0s linear .1s;
+        opacity: 0
+    }
+
+    .login .checkbox .helper::before {
+        top: .65rem;
+        left: .38rem;
+        -webkit-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+        box-shadow: 0 0 0 .0625rem #fff
+    }
+
+    .login .checkbox .helper::after {
+        top: .3rem;
+        left: 0;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg)
+    }
+
+    .login .checkbox label:hover .helper {
+        color: #666
+    }
+
+    .login .checkbox input:checked ~ .helper {
+        color: #666
+    }
+
+    .login .checkbox input:checked ~ .helper::after, .checkbox input:checked ~ .helper::before {
+        opacity: 1;
+        -webkit-transition: height .1s ease;
+        transition: height .1s ease
+    }
+
+    .login .checkbox input:checked ~ .helper::after {
+        height: .5rem
+    }
+
+    .login .checkbox input:checked ~ .helper::before {
+        height: 1.2rem;
+        -webkit-transition-delay: .1s;
+        transition-delay: .1s
+    }
+
+    .login .checkbox + .checkbox, .radio + .radio {
+        margin-top: 1rem
+    }
+
+    .login .button {
+        position: relative;
+        font-size: 0.85rem;
+        background: #d75757;
+        border: 1px solid #891524;
+        padding: .3rem 2rem;
+        border-radius: 2px;
+        width: 100%;
+        cursor: pointer;
+        -webkit-transition: background-color .1s ease, color .1s ease, box-shadow .1s ease;
+        transition: background-color .1s ease, color .1s ease, box-shadow .1s ease;
+        overflow: hidden;
+    }
+
+    .login .button span {
+        color: #fff;
+        position: relative;
+        z-index: 1
+    }
+
+    .login .button::before {
+        content: '';
+        position: absolute;
+        background: #9c3f3f;
+        border: 50vh solid #891524;
+        border-radius: 50%;
+        display: block;
+        top: 50%;
+        left: 50%;
+        z-index: 0;
+        opacity: 1;
+        -webkit-transform: translate(-50%, -50%) scale(0);
+        transform: translate(-50%, -50%) scale(0)
+    }
+
+    .login .button:hover {
+        color: #666;
+        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2)
+    }
+
+    .login .button:active::before, .button:focus::before {
+        -webkit-transition: opacity .1s ease .13s, -webkit-transform .4s ease;
+        transition: transform .4s ease, opacity .1s ease .13s, -webkit-transform .4s ease;
+        -webkit-transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0
+    }
+
+    .login button:disabled {
+        cursor: not-allowed;
+        opacity: .55
+    }
+
+    .login .login-switch {
+        float: right;
+        width: 44px;
+        height: 44px;
+        margin-top: -8px;
+        margin-right: -13px;
+        color: #bbb;
+    }
+
+    .login .login-switch:hover {
+        color: #999;
+    }
+
+    .login svg {
+        height: 100%;
+        width: 100%;
+        fill: currentColor;
+        vertical-align: bottom;
+    }
+
+
+    .login .input-group {
+        position: relative;
+    }
+
+    .login .input-group > input {
+        background-color: white;
+        border-radius: 3px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        margin-bottom: -1px;
+        width: 100%;
+        height: 45px;
+        outline: none;
+        padding: 0 16px 0 55px;
+        position: relative;
+    }
+
+    .login .input-group > input:focus {
+        border: 1px solid #4DD2FF;
+        z-index: 100;
+    }
+
+    .login .input-group > .icon {
+        width: 43px;
+        height: 43px;
+        line-height: 43px;
+        text-align: center;
+        border-radius: 2px 0 0 2px;
+        background: #eee;
+        position: absolute;
+        z-index: 999;
+        color: #9a9a9a;
+        left: 1px;
+        top: 1px;
+        padding: 0;
+        display: block;
+        float: left;
+        border-right: 1px solid #dedede;
+    }
+
+    .login .input-group > .icon > svg {
+        width: 21px;
+        height: 21px;
+        position: absolute;
+        left: 14px;
+        top: 10px;
+    }
+
+    .login .icon > .arrow_left {
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent transparent transparent #dedede;
+        position: absolute;
+        top: 14px;
+        right: -13px;
+    }
+
+    .login .icon > .arrow {
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent transparent transparent #eee;
+        position: absolute;
+        top: 14px;
+        right: -12px;
+    }
+
+
+    .login .logo {
+        width: 40px;
+        height: 40px;
+        color: #bbb;
+        float: left;
+        margin-top: -10px;
+        margin-right: 10px;
+    }
+    .login .shenfen {
+        font-size: 17px;
+        font-weight: 400;
+    }
+    .login .alert {
+        position: relative;
+        margin-top: 0.5em;
+        margin-bottom: -1em;
+        padding: 10px;
+        border-radius: 2px;
+        font-size: .8rem;
+        color: #9c232a;
+    }
+
+    .login .alert a {
+        font-weight: 700;
+        color: #0AE
+    }
+    .login .help-block {
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: #9e9e9e
+    }
+
+    .login .title-hint {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .login .title-hint a {
+        color: #9a9a9a;
+    }
+    .login .title-hint .icon {
+        width: 1rem;
+        height: 1rem;
+        margin-right: 0.2rem;
+    }
+</style>
+<div class="login hidden" id="Login">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <g id="icon-qrlogin">
+                <polygon points="47.6 47.6 47.6 47.8 47.8 47.8 47.6 47.6"></polygon>
+                <polygon points="43.1 30.2 38.8 30.2 38.8 25.9 25.9 25.9 38.9 38.9 47.4 38.9 47.4 25.9 47.4 25.9 43.1 25.9 43.1 30.2"></polygon>
+                <polygon points="12.9 12.9 12.9 8.6 8.6 8.6 12.9 12.9"></polygon>
+                <path d="M26.1,21.8H47.7V0.2H26.1V21.8ZM30.4,4.6h13v13h-13V4.6Z" transform="translate(-0.2 -0.2)"></path>
+                <rect x="34.4" y="8.6" width="4.3" height="4.32"></rect>
+                <polygon points="4.3 4.3 17.2 4.3 17.2 17.2 21.5 21.5 21.5 0 0 0 4.3 4.3"></polygon>
+                <polygon points="47.4 47.4 47.4 43.2 43.2 43.2 47.4 47.4"></polygon>
+            </g>
+            <g id="icon-tiup">
+                <path d="M22.4 7.1L14.2 4 5.9 7.1 6.2 8l7.9-2.9L22 8ZM5.9 8.3H22.4V9.2H5.9V8.3Zm0 6.8H22.4v1H5.9v-1Zm-1 1.2H23.3v0.9H4.9V16.3h0ZM8.1 9.6H9.7v5.1H8.1V9.6h0Zm2.6 0h1.7v5.1H10.7V9.6h0Zm2.6 0h1.6v5.1H13.4V9.6H13.3Zm2.6 0h1.6v5.1H16V9.6H15.9Zm2.6 0h1.6v5.1H18.7V9.6H18.5ZM10.3 8l3.8-1.4L17.9 8h2.5L14 5.6h0L7.7 8h2.6Zm13.2 9.7H4.7a3.8 3.8 0 0 1-1.3-7.3L3.1 9.6h0A4.4 4.4 0 0 1 9 4.4H9L9.9 4.9a4.3 4.3 0 0 1 0.2-1h0a4.3 4.3 0 0 1 8.3 1.3l1.3-0.7 1.5-0.3a4.2 4.2 0 0 1 4.2 4.2h0a4.9 4.9 0 0 1-0.3 1.3 3.9 3.9 0 0 1-1.9 2.1 2.3 2.3 0 0 0 2.5-0.8 3.7 3.7 0 0 1-2.1 6.6H23.5Zm2.4-7.5a5.1 5.1 0 0 0-6.8-6.4 5.2 5.2 0 0 0-9.9-0.3 5.3 5.3 0 0 0-7 6.5 4.6 4.6 0 0 0 2.3 8.6h19a4.6 4.6 0 0 0 2.4-8.4h0Z"></path>
+            </g>
+            <g id="icon-account">
+                <path d="M10.656 16q-2.219 0-3.781-1.563t-1.563-3.781 1.563-3.781 3.781-1.563 3.781 1.563 1.563 3.781-1.563 3.781-3.781 1.563zM10.656 18.688q1.969 0 4.344 0.563t4.344 1.844 1.969 2.906v2.688h-21.313v-2.688q0-1.625 1.969-2.906t4.344-1.844 4.344-0.563z"></path>
+            </g>
+            <g id="icon-lock">
+                <path d="M18.688 10.688q1.063 0 1.844 0.781t0.781 1.844v13.375q0 1.063-0.781 1.844t-1.844 0.781h-16q-1.125 0-1.906-0.781t-0.781-1.844v-13.375q0-1.063 0.781-1.844t1.906-0.781h1.313v-2.688q0-2.75 1.969-4.719t4.719-1.969 4.688 1.969 1.938 4.719v2.688h1.375zM10.656 22.688q1.094 0 1.875-0.781t0.781-1.906-0.781-1.906-1.875-0.781-1.875 0.781-0.781 1.906 0.781 1.906 1.875 0.781zM14.813 10.688v-2.688q0-1.688-1.219-2.906t-2.938-1.219-2.906 1.219-1.188 2.906v2.688h8.25z"></path>
+            </g>
+            <g id="icon-shield-security">
+                <path class="path1" d="M12 1.313l12 5.375v8q0 5.563-3.438 10.156t-8.563 5.844q-5.125-1.25-8.563-5.844t-3.438-10.156v-8zM12 16v-11.75l-9.313 4.125v7.625h9.313v11.938q3.688-1.188 6.25-4.5t3.063-7.438h-9.313z"></path>
+            </g>
+            <g id="icon-circle-left">
+                <path d="M16 32c8.84 0 16-7.16 16-16s-7.16-16-16-16-16 7.16-16 16 7.16 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM20.91 9.91l-2.83-2.83-8.91 8.91 8.91 8.91 2.83-2.83-6.09-6.09z"></path>
+            </g>
+        </defs>
+    </svg>
+
+    <div class="card-container">
+        <a class="login-switch" title="扫码登录" href="javascript:window.location.href=&#39;/auth/login.code&#39; + window.location.search;">
+            <svg viewBox="0 0 48 48">
+                <use xlink:href="#icon-qrlogin"></use>
+            </svg>
+        </a>
+        <form id="login-form" name="login" onsubmit="return false">
+            <div id="login-title">
+                <div class="logo">
+                    <svg viewBox="0 0 28 18.5">
+                        <use xlink:href="#icon-tiup"></use>
+                    </svg>
+                </div>
+                <p class="shenfen">身份认证</p>
+            </div>
+            <div class="title-hint" id="login-back" style="display:none">
+               <a href="javascript:toggleLogin();"><svg class="icon" viewBox="0 0 32 32">
+                    <use xlink:href="#icon-circle-left"></use>
+                </svg> 重新输入账户</a>
+            </div>
+            <div class="input-group" id="username">
+                <div class="icon">
+                    <svg viewBox="0 0 32 32">
+                        <use xlink:href="#icon-account"></use>
+                    </svg>
+                    <span class="arrow_left"></span>
+                    <span class="arrow"></span>
+                </div>
+                <input type="text" placeholder="学工号/手机号/邮箱" name="username" required="" id="user">
+            </div>
+
+            <div class="input-group" id="password">
+                <div class="icon">
+                    <svg viewBox="0 0 32 32">
+                        <use xlink:href="#icon-lock"></use>
+                    </svg>
+                    <span class="arrow_left"></span>
+                    <span class="arrow"></span>
+                </div>
+                <input type="password" placeholder="密码" name="password" required="" id="pwd">
+            </div>
+
+            <div class="input-group" id="twofactor-password" style="display:none">
+                <div class="icon">
+                    <svg viewBox="0 0 32 32">
+                        <use xlink:href="#icon-shield-security"></use>
+                    </svg>
+                    <span class="arrow_left"></span>
+                    <span class="arrow"></span>
+                </div>
+                <input type="text" placeholder="二次验证码" name="twofactor_password">
+                <small class="help-block">您启用了二次身份验证，请在手机上打开谷歌身份验证器，输入动态验证码。</small>
+            </div>
+
+            <div style="clear: both;"></div>
+
+            <div class="input-group" id="twofactor-recovery" style="display:none">
+                <div class="icon">
+                    <svg viewBox="0 0 32 32">
+                        <use xlink:href="#icon-shield-security"></use>
+                    </svg>
+                    <span class="arrow_left"></span>
+                    <span class="arrow"></span>
+                </div>
+                <input type="text" placeholder="二次认证恢复码" name="twofactor_recovery">
+                <small class="help-block">请输入您备份的二次认证恢复码, 每个恢复码只能使用一次。</small>
+            </div>
+
+            <div class="alert" id="login-alert" style="display:none">server error, please try it later</div>
+            <div class="form-group">
+                <button class="button" id="login-submit" type="submit"><span>登录</span></button>
+            </div>
+
+            <div class="form-group" style="padding-bottom:1rem" id="remember_me">
+                <span class="left">
+                    <div class="checkbox"><label>
+                    <input name="remember_me" type="checkbox"><i class="helper"></i>记住登录状态</label></div></span>
+                <span class="right">
+                    <a href="javascript:goTo(&#39;/forget&#39;)">忘记密码?</a></span>
+            </div>
+            <input type="hidden" name="csrftoken" value="53gvrx0rfj" id="csrftoken">
+            <div class="form-group" id="login-hint">
+                <div class="right hidden"><a href="javascript:goTo(&#39;/auth/pwd&#39; + window.location.search + &#39;#l-first-use&#39;);">第一次使用？</a></div>
+            </div>
+            <div class="form-group" id="twofactor-password-hint" style="display:none">
+                <div class="right"><small class="help-block">无法获取验证码? 请 <a href="javascript:toggleTwofactorRecovery();">使用恢复码</a></small></div>
+            </div>
+            <div class="form-group" id="twofactor-recovery-hint" style="display:none">
+                <div class="right"><small class="help-block">找不到恢复码? 请 <a href="javascript:goTo(&#39;/forget&#39;)">重置密码</a></small></div>
+            </div>
+        </form>
+
+    </div>
+</div>

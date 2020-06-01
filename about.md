@@ -1,9 +1,9 @@
 ---
 layout: page
-title: 关于我 
+title: 关于组织 
 ---
 
-一个 iOS SDK 开发者，喜欢研究一些新技术。
+<!-- 一个 iOS SDK 开发者，喜欢研究一些新技术。
 <p>
 平时喜欢整理个人博客，逛逛技术论坛。
 <p>
@@ -46,7 +46,7 @@ email：leoparpan@icloud.com
 qq: 1499065178     
 <p> 
 如果有 搭建博客 或者 移动端 技术的问题可以一起讨论.
-<p> 
+<p>  -->
 
 
 {% include comments.html %}
